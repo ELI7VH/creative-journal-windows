@@ -1,5 +1,7 @@
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Media;
 using System;
+using Windows.UI;
 
 namespace DaemonRecorder {
     public partial class MainWindow : Window {
@@ -11,7 +13,7 @@ namespace DaemonRecorder {
             this.InitializeComponent();
             _instance = this;
 
-            this.AppWindow.Resize(new Windows.Graphics.SizeInt32(800, 700));
+            this.AppWindow.Resize(new Windows.Graphics.SizeInt32(800, 400));
 
             this.Title = "Daemon Recorder";
         }
@@ -51,5 +53,22 @@ namespace DaemonRecorder {
             status.Text = message;
         }
 
+
+        public void SetTransportPanelColor(Color color) {
+            TransportPanel.Background = new SolidColorBrush(color);
+        }
+
+        public void Record_Click(object sender, RoutedEventArgs e) {
+            App.CurrentApp.recorder.Record();
+        }
+
+        public void Play_Click(object sender, RoutedEventArgs e) {
+            App.CurrentApp.recorder.Play();
+        }
+
+        public void Stop_Click(object sender, RoutedEventArgs e) {
+            App.CurrentApp.recorder.Stop();
+
+        }
     }
 }

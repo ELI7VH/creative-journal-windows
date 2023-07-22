@@ -1,4 +1,5 @@
-﻿using Microsoft.UI.Xaml;
+﻿using Microsoft.UI;
+using Microsoft.UI.Xaml;
 using SocketIOClient;
 
 // WinUI project structure: http://aka.ms/winui-project-info.
@@ -32,7 +33,22 @@ namespace DaemonRecorder {
         private void InitializeAudio() {
             // TODO: make its own window (select)
             AppLog.Write("Initializing Audio");
-            recorder = new AudioRecorder();
+
+            recorder = new AudioRecorder {
+                OnRecord = () => {
+                    AppLog.Write("Recording Callback...");
+                    window.SetTransportPanelColor(Colors.Red);
+                },
+                OnStop = () => {
+                    AppLog.Write("Stop Callback...");
+                    window.SetTransportPanelColor(Colors.Black);
+                },
+                OnPlay = () => {
+                    AppLog.Write("Play Callback...");
+                    window.SetTransportPanelColor(Colors.Blue);
+                }
+
+            };
 
             foreach (var device in recorder.devices) {
                 AppLog.Write($"Audio Device Available: {device.ProductName}");

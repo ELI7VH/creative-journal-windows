@@ -7,6 +7,9 @@ namespace DaemonRecorder {
         public List<WaveInCapabilities> devices;
         public WaveIn waveIn;
         public WaveInCapabilities device;
+        public Action OnRecord;
+        public Action OnStop;
+        public Action OnPlay;
 
         public static List<WaveInCapabilities> GetDevices() {
             var deviceCount = NAudio.Wave.WaveIn.DeviceCount;
@@ -27,15 +30,24 @@ namespace DaemonRecorder {
             device = _device;
         }
 
-        public void Start() {
-            throw new NotImplementedException();
+        public void Record() {
+            AppLog.Write("TODO: Record!");
+            OnRecord();
+        }
+
+        public void Play() {
+            AppLog.Write("TODO: Play!");
+            OnPlay();
+
         }
         public void Stop() {
-            throw new NotImplementedException();
+            AppLog.Write("TODO: Stop!");
+            OnStop();
         }
 
         public void Pause() {
-            throw new NotImplementedException();
+            AppLog.Write("TODO: Pause!");
         }
+
     }
 }

@@ -26,8 +26,9 @@
         </tb:TaskbarIcon>
         <StackPanel
             Orientation="Horizontal"
-            HorizontalAlignment="Stretch"
-            Spacing="20">
+            HorizontalAlignment="Center"
+            Spacing="20"
+            >
             <Button
                 x:Name="DebugButton"
                 Click="DebugButton_Click">Click Me 💥</Button>
@@ -44,27 +45,85 @@
                 x:Name="LaunchUI"
                 Click="LaunchUI_Click">Launch UI 🔗</Button>
         </StackPanel>
-        <Grid
-            ColumnSpacing="20"
-            BorderBrush="AliceBlue"
-            BorderThickness="1">
-            <Grid.ColumnDefinitions>
-
-                <ColumnDefinition
-                    Width="200" 
-                    />
-                <ColumnDefinition
-                    Width="200" />
-            </Grid.ColumnDefinitions>
+        <StackPanel
+            x:Name="TransportPanel"
+            Orientation="Horizontal"
+            HorizontalAlignment="Center"
+            Spacing="20"
+            BorderBrush="DarkGray"
+            >
+            <Button
+                Click="Record_Click"
+                >Record</Button>
+            <Button
+                Click="Stop_Click"
+                >Stop</Button>
+            <Button
+                Click="Play_Click">Play</Button>
+        </StackPanel>
+        <StackPanel
+            Orientation="Horizontal"
+            HorizontalAlignment="Center"
+            Spacing="20">
             <TextBlock
                 Grid.Row="0"
-                Width="200"
                 x:Name="status"
                 Text="System Status" />
             <TextBlock
                 Grid.Row="1"
-                Width="200"
                 x:Name="selectedAudioDevice"
+                Text="Selected Audio Device" />
+        </StackPanel>
+        <StackPanel>
+            <TextBlock>Broken Grid taken directly from the docs:</TextBlock>
+            <TextBlock>https://learn.microsoft.com/en-us/windows/apps/design/layout/layouts-with-xaml</TextBlock>
+        </StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition
+                    Width="Auto" />
+                <ColumnDefinition />
+                <ColumnDefinition
+                    Width="44" />
+                <ColumnDefinition
+                    Width="2*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                Text="Column 1 sizes to its content."
+                 />
+            <TextBlock
+                Text="This should be column 2????."
+                />
+            <TextBlock>
+                WTF
+            </TextBlock>
+            <Grid>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto"/>
+        <ColumnDefinition/>
+        <ColumnDefinition Width="44"/>
+        <ColumnDefinition Width="2*"/>
+    </Grid.ColumnDefinitions>
+    <TextBlock Text="Column 1 sizes to its content." FontSize="24"/>
+</Grid>
+
+        </Grid>
+        <Grid>
+            <TextBlock>Working, but overly verbose grid:</TextBlock>
+        </Grid>
+        
+        <Grid ColumnSpacing="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition
+                    Width="Auto" />
+                <ColumnDefinition
+                    Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                Grid.Column="0"
+                Text="System Status" />
+            <TextBlock
+                Grid.Column="1"
                 Text="Selected Audio Device" />
         </Grid>
     </StackPanel>
