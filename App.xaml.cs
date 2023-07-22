@@ -2,8 +2,7 @@
 using SocketIOClient;
 using System.Diagnostics;
 
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
+// WinUI project structure: http://aka.ms/winui-project-info.
 
 namespace DaemonRecorder {
     public partial class App : Application {
@@ -11,20 +10,10 @@ namespace DaemonRecorder {
         public MainWindow window;
         public AudioRecorder recorder;
 
-        /// <summary>
-        /// Initializes the singleton application object.  This is the first line of authored code
-        /// executed, and as such is the logical equivalent of main() or WinMain().
-        /// </summary>
         public App() {
             this.InitializeComponent();
-            // AppWindow.Resize(500, 500);
-            // icon click
         }
 
-        /// <summary>
-        /// Invoked when the application is launched.
-        /// </summary>
-        /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args) {
             window = new MainWindow();
             window.Activate();
@@ -37,7 +26,7 @@ namespace DaemonRecorder {
         }
 
         private void GetSongs() {
-            // make it's own window
+            // TODO: move to it's own window
             window.LogMessage("Getting Song List");
 
             var songs = Api.GetSongs();
@@ -52,7 +41,7 @@ namespace DaemonRecorder {
         }
 
         private void InitializeAudio() {
-            // make its own window (select)
+            // TODO: make its own window (select)
             window.LogMessage("Initializing Audio");
             recorder = new AudioRecorder();
 
@@ -62,7 +51,9 @@ namespace DaemonRecorder {
         }
 
         async private void ConnectToWebsocket() {
+            // TODO: create own socket log window I think
             // this is the annoying one
+            // maybe pass the socket reference to a new window instance?
             var url = "https://elijahlucian.ca";
             client = new SocketIO(url);
 
@@ -72,7 +63,7 @@ namespace DaemonRecorder {
 
             client.OnAny(
                 (eventName, data) => {
-                    LogSocket($"Event: {eventName} {data}");
+                    LogSocket($"Any Event rcvd: {eventName} {data}");
                 }
             );
 
@@ -99,12 +90,10 @@ namespace DaemonRecorder {
             });
 
             await client.ConnectAsync();
-
         }
 
         private void LogSocket(string message) {
             Debug.WriteLine(message);
-            // window.LogMessage(message);
         }
     }
 }

@@ -14,11 +14,8 @@ namespace DaemonRecorder {
                 var device = NAudio.Wave.WaveIn.GetCapabilities(i);
                 devices.Add(device);
             }
-
             return devices;
         }
-
-
 
         public AudioRecorder() {
 

@@ -2,11 +2,7 @@ using Microsoft.UI.Xaml;
 using System;
 using System.Collections.Generic;
 
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
-
 namespace DaemonRecorder {
-
     public partial class MainWindow : Window {
         public int counter = 0;
         public MainWindow _instance;
@@ -17,6 +13,7 @@ namespace DaemonRecorder {
             this.InitializeComponent();
             _instance = this;
 
+            this.AppWindow.Resize(new Windows.Graphics.SizeInt32(800, 700));
         }
 
         private void myButton_Click(object sender, RoutedEventArgs e) {
@@ -27,12 +24,9 @@ namespace DaemonRecorder {
             counter++;
 
             LogMessage(message);
-
-            // App.client.EmitAsync("message", message);
         }
 
         public void SetSongList(List<SongRecord> _songs) {
-
             songs = _songs;
 
             RefreshSongList(songs);
@@ -63,7 +57,6 @@ namespace DaemonRecorder {
             var success = Windows.System.Launcher.LaunchUriAsync(uri);
 
             LogMessage($"Launched {uri} with success: {success}");
-
         }
 
         public void UpdateSocketStatus(string status) {
@@ -71,11 +64,11 @@ namespace DaemonRecorder {
         }
 
         public void LogMessage(string message) {
-            // consoleLog.IsReadOnly = false;
+            consoleLog.IsReadOnly = false;
             string content = $"{message}\n{logFile}";
             consoleLog.Document.SetText(Microsoft.UI.Text.TextSetOptions.None, content);
             logFile = content;
-            // consoleLog.IsReadOnly = true;
+            consoleLog.IsReadOnly = true;
         }
     }
 }
