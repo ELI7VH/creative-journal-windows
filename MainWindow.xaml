@@ -62,53 +62,12 @@
             HorizontalAlignment="Center"
             Spacing="20">
             <TextBlock
-                Grid.Row="0"
                 x:Name="status"
                 Text="System Status" />
             <TextBlock
-                Grid.Row="1"
                 x:Name="selectedAudioDevice"
                 Text="Selected Audio Device" />
         </StackPanel>
-        <StackPanel>
-            <TextBlock>Broken Grid taken directly from the docs:</TextBlock>
-            <TextBlock>https://learn.microsoft.com/en-us/windows/apps/design/layout/layouts-with-xaml</TextBlock>
-        </StackPanel>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition
-                    Width="Auto" />
-                <ColumnDefinition />
-                <ColumnDefinition
-                    Width="44" />
-                <ColumnDefinition
-                    Width="2*" />
-            </Grid.ColumnDefinitions>
-            <TextBlock
-                Text="Column 1 sizes to its content." />
-            <TextBlock
-                Text="This should be column 2????." />
-            <TextBlock>
-                WTF</TextBlock>
-        </Grid>
-        <StackPanel>
-            <TextBlock>Working, but overly verbose grid:</TextBlock>
-        </StackPanel>
-        <Grid
-            ColumnSpacing="20">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition
-                    Width="Auto" />
-                <ColumnDefinition
-                    Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <TextBlock
-                Grid.Column="0"
-                Text="System Status" />
-            <TextBlock
-                Grid.Column="1"
-                Text="Selected Audio Device" />
-        </Grid>
     </StackPanel>
 </Window>
 
