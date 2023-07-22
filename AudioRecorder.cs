@@ -5,7 +5,8 @@ using System.Collections.Generic;
 namespace DaemonRecorder {
     public class AudioRecorder {
         public List<WaveInCapabilities> devices;
-        public int selectedDevice = 0;
+        public WaveIn waveIn;
+        public WaveInCapabilities device;
 
         public static List<WaveInCapabilities> GetDevices() {
             var deviceCount = NAudio.Wave.WaveIn.DeviceCount;
@@ -20,6 +21,10 @@ namespace DaemonRecorder {
 
         public AudioRecorder() {
             devices = GetDevices();
+        }
+
+        public void SetDevice(WaveInCapabilities _device) {
+            device = _device;
         }
 
         public void Start() {

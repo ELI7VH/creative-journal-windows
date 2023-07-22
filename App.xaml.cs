@@ -8,8 +8,13 @@ namespace DaemonRecorder {
         public SocketIO client;
         public MainWindow window;
         public AudioRecorder recorder;
+        public static readonly string appFolder = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+
+        public static App CurrentApp => (App)Current;
 
         public App() {
+            AppLog.Write("DaemonRecorder starting...");
+
             this.InitializeComponent();
         }
 

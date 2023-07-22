@@ -13,8 +13,7 @@
         HorizontalAlignment="Center"
         VerticalAlignment="Center"
         Width="700px"
-        Spacing="20"
-        MaxHeight="500">
+        Spacing="20">
         <tb:TaskbarIcon>
             <tb:TaskbarIcon.IconSource>
                 <tb:GeneratedIconSource
@@ -28,7 +27,7 @@
         <StackPanel
             Orientation="Horizontal"
             HorizontalAlignment="Stretch"
-            Spacing="50">
+            Spacing="20">
             <Button
                 x:Name="DebugButton"
                 Click="DebugButton_Click">Click Me 💥</Button>
@@ -45,12 +44,29 @@
                 x:Name="LaunchUI"
                 Click="LaunchUI_Click">Launch UI 🔗</Button>
         </StackPanel>
-        <StackPanel
-            Orientation="Horizontal">
+        <Grid
+            ColumnSpacing="20"
+            BorderBrush="AliceBlue"
+            BorderThickness="1">
+            <Grid.ColumnDefinitions>
+
+                <ColumnDefinition
+                    Width="200" 
+                    />
+                <ColumnDefinition
+                    Width="200" />
+            </Grid.ColumnDefinitions>
             <TextBlock
+                Grid.Row="0"
+                Width="200"
                 x:Name="status"
-                Text="Status Messages" />
-        </StackPanel>
+                Text="System Status" />
+            <TextBlock
+                Grid.Row="1"
+                Width="200"
+                x:Name="selectedAudioDevice"
+                Text="Selected Audio Device" />
+        </Grid>
     </StackPanel>
 </Window>
 

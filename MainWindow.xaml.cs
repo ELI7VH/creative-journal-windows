@@ -12,6 +12,8 @@ namespace DaemonRecorder {
             _instance = this;
 
             this.AppWindow.Resize(new Windows.Graphics.SizeInt32(800, 700));
+
+            this.Title = "Daemon Recorder";
         }
 
         private void DebugButton_Click(object sender, RoutedEventArgs e) {

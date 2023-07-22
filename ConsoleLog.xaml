@@ -7,13 +7,12 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
-    <Grid>
+    <StackPanel>
         <RichEditBox
             x:Name="Log"
             Header="Console Log"
             MinHeight="200"
-            MaxHeight="200"
+            MaxHeight="400"
             ScrollViewer.IsVerticalRailEnabled="True" />
-    </Grid>
+    </StackPanel>
 </Window>
