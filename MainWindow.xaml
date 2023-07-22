@@ -31,32 +31,26 @@
             Spacing="50">
             <Button
                 x:Name="DebugButton"
-                Click="DebugButton_Click">Click Me</Button>
+                Click="DebugButton_Click">Click Me 💥</Button>
             <Button
-                x:Name="AudioSettings"
-                Click="AudioSettings_Click">Audio Settings</Button>
+                x:Name="AudioSettingsButton"
+                Click="AudioSettingsButton_Click">Audio Settings 🎙️</Button>
             <Button
-                x:Name="AudioSettings"
-                Click="AudioSettings_Click">Song Player</Button>
+                x:Name="SongPlayerButton"
+                Click="SongPlayerButton_Click">Song Player 🎶</Button>
+            <Button
+                x:Name="ConsoleLogButton"
+                Click="ConsoleLogButton_Click">Console Log 📝</Button>
             <Button
                 x:Name="LaunchUI"
-                Click="LaunchUI_Click">Launch UI</Button>
+                Click="LaunchUI_Click">Launch UI 🔗</Button>
         </StackPanel>
         <StackPanel
             Orientation="Horizontal">
             <TextBlock
                 x:Name="status"
                 Text="Status Messages" />
-            
         </StackPanel>
-
-        <RichEditBox
-            x:Name="consoleLog"
-            Header="Console Log"
-            MinHeight="200"
-            MaxHeight="200"
-            ScrollViewer.IsVerticalRailEnabled="True"
-            />
     </StackPanel>
 </Window>
 

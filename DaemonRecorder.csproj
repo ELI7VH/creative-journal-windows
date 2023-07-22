@@ -13,7 +13,7 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="AudioSettings.xaml" />
-    <None Remove="MusicPlayer.xaml" />
+    <None Remove="ConsoleLog.xaml" />
     <None Remove="SongPlayer.xaml" />
   </ItemGroup>
 
@@ -45,7 +45,7 @@
     <ProjectCapability Include="Msix" />
   </ItemGroup>
   <ItemGroup>
-    <Page Update="MusicPlayer.xaml">
+    <Page Update="ConsoleLog.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
