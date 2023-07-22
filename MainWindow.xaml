@@ -27,8 +27,7 @@
         <StackPanel
             Orientation="Horizontal"
             HorizontalAlignment="Center"
-            Spacing="20"
-            >
+            Spacing="20">
             <Button
                 x:Name="DebugButton"
                 Click="DebugButton_Click">Click Me 💥</Button>
@@ -50,14 +49,11 @@
             Orientation="Horizontal"
             HorizontalAlignment="Center"
             Spacing="20"
-            BorderBrush="DarkGray"
-            >
+            BorderBrush="DarkGray">
             <Button
-                Click="Record_Click"
-                >Record</Button>
+                Click="Record_Click">Record</Button>
             <Button
-                Click="Stop_Click"
-                >Stop</Button>
+                Click="Stop_Click">Stop</Button>
             <Button
                 Click="Play_Click">Play</Button>
         </StackPanel>
@@ -89,20 +85,17 @@
                     Width="2*" />
             </Grid.ColumnDefinitions>
             <TextBlock
-                Text="Column 1 sizes to its content."
-                 />
+                Text="Column 1 sizes to its content." />
             <TextBlock
-                Text="This should be column 2????."
-                />
+                Text="This should be column 2????." />
             <TextBlock>
-                WTF
-            </TextBlock>
-            </Grid>
+                WTF</TextBlock>
+        </Grid>
         <StackPanel>
             <TextBlock>Working, but overly verbose grid:</TextBlock>
         </StackPanel>
-        
-        <Grid ColumnSpacing="20">
+        <Grid
+            ColumnSpacing="20">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition
                     Width="Auto" />
