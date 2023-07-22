@@ -1,6 +1,5 @@
 ﻿using Microsoft.UI.Xaml;
 using SocketIOClient;
-using System.Diagnostics;
 
 // WinUI project structure: http://aka.ms/winui-project-info.
 
@@ -19,34 +18,19 @@ namespace DaemonRecorder {
             window.Activate();
 
             window.Title = "Daemon Recorder 🍕";
+            AppLog.Write("DaemonRecorder started!");
 
-            GetSongs();
             ConnectToWebsocket();
             InitializeAudio();
         }
 
-        private void GetSongs() {
-            // TODO: move to it's own window
-            window.LogMessage("Getting Song List");
-
-            var songs = Api.GetSongs();
-
-            if (songs != null) {
-                window.LogMessage($"Got {songs.Count} songs!");
-                window.SetSongList(songs);
-
-            } else {
-                window.LogMessage("Error getting songs!");
-            }
-        }
-
         private void InitializeAudio() {
             // TODO: make its own window (select)
-            window.LogMessage("Initializing Audio");
+            AppLog.Write("Initializing Audio");
             recorder = new AudioRecorder();
 
             foreach (var device in recorder.devices) {
-                window.LogMessage($"Audio Device Available: {device.ProductName}");
+                AppLog.Write($"Audio Device Available: {device.ProductName}");
             }
         }
 
@@ -93,7 +77,7 @@ namespace DaemonRecorder {
         }
 
         private void LogSocket(string message) {
-            Debug.WriteLine(message);
+            AppLog.Write(message);
         }
     }
 }

@@ -28,28 +28,28 @@
         <StackPanel
             Orientation="Horizontal"
             HorizontalAlignment="Stretch"
-            Spacing="5">
+            Spacing="50">
             <Button
-                x:Name="myButton"
-                Click="myButton_Click">Click Me</Button>
-            <TextBlock
-                x:Name="data"
-                Text="do something" />
+                x:Name="DebugButton"
+                Click="DebugButton_Click">Click Me</Button>
             <Button
-                x:Name="launch"
-                Click="launch_Click">Launch UI</Button>
+                x:Name="AudioSettings"
+                Click="AudioSettings_Click">Audio Settings</Button>
+            <Button
+                x:Name="AudioSettings"
+                Click="AudioSettings_Click">Song Player</Button>
+            <Button
+                x:Name="LaunchUI"
+                Click="LaunchUI_Click">Launch UI</Button>
         </StackPanel>
-        <TextBox
-            x:Name="search"
-            Text="Search For Song"
-            TextChanged="search_TextChanged" />
-        <RichEditBox
-            x:Name="songList"
-            Header="Song List"
-            MinHeight="200"
-            MaxHeight="200"
-            ScrollViewer.IsVerticalRailEnabled="True"
-            />
+        <StackPanel
+            Orientation="Horizontal">
+            <TextBlock
+                x:Name="status"
+                Text="Status Messages" />
+            
+        </StackPanel>
+
         <RichEditBox
             x:Name="consoleLog"
             Header="Console Log"
