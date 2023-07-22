@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "DaemonRecorder (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "DaemonRecorder (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

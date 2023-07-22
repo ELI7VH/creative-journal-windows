@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="DaemonRecorder.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DaemonRecorder"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:tb="using:H.NotifyIcon"
+    mc:Ignorable="d">
+    <StackPanel
+        Orientation="Vertical"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        Width="700px"
+        Spacing="20"
+        MaxHeight="500">
+        <tb:TaskbarIcon>
+            <tb:TaskbarIcon.IconSource>
+                <tb:GeneratedIconSource
+                    FontSize="70"
+                    AnimatedIcon.State="MouseOver"
+                    TextMargin="20,0,0,0"
+                    Text="❤"
+                    Foreground="Red" />
+            </tb:TaskbarIcon.IconSource>
+        </tb:TaskbarIcon>
+        <StackPanel
+            Orientation="Horizontal"
+            HorizontalAlignment="Stretch"
+            Spacing="5">
+            <Button
+                x:Name="myButton"
+                Click="myButton_Click">Click Me</Button>
+            <TextBlock
+                x:Name="data"
+                Text="do something" />
+            <Button
+                x:Name="launch"
+                Click="launch_Click">Launch UI</Button>
+        </StackPanel>
+        <TextBox
+            x:Name="search"
+            Text="Search For Song"
+            TextChanged="search_TextChanged" />
+        <RichEditBox
+            x:Name="songList"
+            Header="Song List"
+            MinHeight="200"
+            MaxHeight="200"
+            ScrollViewer.IsVerticalRailEnabled="True"
+            />
+        <RichEditBox
+            x:Name="consoleLog"
+            Header="Console Log"
+            MinHeight="200"
+            MaxHeight="200"
+            ScrollViewer.IsVerticalRailEnabled="True"
+            />
+    </StackPanel>
+</Window>
+
+ 
