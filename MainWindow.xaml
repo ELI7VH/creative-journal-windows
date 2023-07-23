@@ -14,7 +14,13 @@
         VerticalAlignment="Center"
         Width="700px"
         Spacing="20">
-        <tb:TaskbarIcon DoubleTapped="TaskbarIcon_DoubleTapped">
+        <tb:TaskbarIcon
+            x:Name="TrayIcon"
+            x:FieldModifier="public"
+            ToolTipText="Creative Journal"
+            NoLeftClickDelay="True"
+            DoubleTapped="{x:Bind TaskbarIcon_DoubleTapped}"
+            LeftClickCommand="{x:Bind ShowHideWindowCommand}">
             <tb:TaskbarIcon.IconSource>
                 <tb:GeneratedIconSource
                     FontSize="70"
@@ -25,37 +31,21 @@
             </tb:TaskbarIcon.IconSource>
             <tb:TaskbarIcon.ContextFlyout>
                 <MenuFlyout>
-                    <MenuFlyout.Items>
-                        <MenuFlyoutItem
-                            Text="Exit"
-                            Command="Exit_Click" />
-                        <MenuFlyoutItem
-                            Text="Open UI"
-                            Command="LaunchUI_Click" />
-                    </MenuFlyout.Items>
+                    <MenuFlyoutItem
+                        Text="Voice Note 🎙️"
+                        Command="{x:Bind Open_VoiceNoteCommand}" />
+                    <MenuFlyoutItem
+                        Text="Song Player 🎶"
+                        Command="{x:Bind Open_SongPlayerCommand}" />
+                    <MenuFlyoutItem
+                        Text="Console Log 📝"
+                        Command="{x:Bind Open_ConsoleLogCommand}" />
+                    <MenuFlyoutItem
+                        Text="Launch UI 🔗"
+                        Command="{x:Bind Open_UICommand}" />
                 </MenuFlyout>
             </tb:TaskbarIcon.ContextFlyout>
         </tb:TaskbarIcon>
-        <StackPanel
-            Orientation="Horizontal"
-            HorizontalAlignment="Center"
-            Spacing="20">
-            <Button
-                x:Name="VoiceNoteButton"
-                Click="VoiceNoteButton_Click">Voice Note 🎙️</Button>
-            <Button
-                x:Name="SongPlayerButton"
-                Click="SongPlayerButton_Click">Song Player 🎶</Button>
-            <Button
-                x:Name="ConsoleLogButton"
-                Click="ConsoleLogButton_Click">Console Log 📝</Button>
-            <Button
-                x:Name="LaunchUI"
-                Click="LaunchUI_Click">Launch UI 🔗</Button>
-            <Button
-                x:Name="AudioSettingsButton"
-                Click="AudioSettingsButton_Click">Settings ⚙️</Button>
-        </StackPanel>
         <StackPanel
             Orientation="Horizontal"
             HorizontalAlignment="Center"
@@ -66,6 +56,26 @@
             <TextBlock
                 x:Name="selectedAudioDevice"
                 Text="Selected Audio Device" />
+        </StackPanel>
+        <StackPanel
+            Orientation="Horizontal"
+            HorizontalAlignment="Center"
+            Spacing="20">
+            <Button
+                x:Name="VoiceNoteButton"
+                Command="{x:Bind Open_VoiceNoteCommand}">Voice Note 🎙️</Button>
+            <Button
+                x:Name="SongPlayerButton"
+                Command="{x:Bind Open_SongPlayerCommand}">Song Player 🎶</Button>
+            <Button
+                x:Name="ConsoleLogButton"
+                Command="{x:Bind Open_ConsoleLogCommand}">Console Log 📝</Button>
+            <Button
+                x:Name="LaunchUI"
+                Command="{x:Bind Open_UICommand}">Launch UI 🔗</Button>
+            <Button
+                x:Name="AudioSettingsButton"
+                Command="{x:Bind Open_AudioSettingsCommand}">Settings ⚙️</Button>
         </StackPanel>
     </StackPanel>
 </Window>

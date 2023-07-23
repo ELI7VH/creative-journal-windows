@@ -1,3 +1,4 @@
+using CommunityToolkit.Mvvm.Input;
 using H.NotifyIcon;
 using Microsoft.UI.Xaml;
 using System;
@@ -20,25 +21,46 @@ namespace DaemonRecorder {
             this.AppWindow.Resize(new Windows.Graphics.SizeInt32(800, 400));
             this.Title = "Creative Journal";
 
-            /*this.Closed += (object sender, WindowEventArgs e) => {
-                voiceNoteWindow?.Close();
+            this.Closed += (object sender, WindowEventArgs e) => {
+                e.Handled = true;
+                this.Hide();
+                /*voiceNoteWindow?.Close();
                 audioSettingsWindow?.Close();
                 songPlayerWindow?.Close();
                 consoleLogWindow?.Close();
 
                 App.Current.Exit();
+                */
                 AppLog.Write("Main Window Closed");
-            };*/
+            };
 
             AppLog.Write("Main Window Opened");
         }
 
-        private void Exit_Click(object sender, RoutedEventArgs e) {
+        public void Exit_Click(object sender, RoutedEventArgs e) {
             AppLog.Write("Exit Clicked");
             App.Current.Exit();
         }
 
-        private void VoiceNoteButton_Click(object sender, RoutedEventArgs e) {
+        [RelayCommand]
+        public void ShowHideWindow() {
+            if (this.AppWindow == null) {
+                AppLog.Write("AppWindow is null");
+                this.Show();
+                return;
+            }
+
+            if (this.AppWindow.IsVisible) {
+                this.Hide();
+                AppLog.Write("Main Window Hidden");
+            } else {
+                this.Show();
+                AppLog.Write("Main Window Shown");
+            }
+        }
+
+        [RelayCommand]
+        public void Open_VoiceNote() {
             if (voiceNoteWindow == null) {
                 voiceNoteWindow = new VoiceNote { Title = "Voice Note" };
                 voiceNoteWindow.Closed += (object sender, WindowEventArgs e) => {
@@ -51,7 +73,8 @@ namespace DaemonRecorder {
             AppLog.Write("Voice Note Window Opened");
         }
 
-        private void ConsoleLogButton_Click(object sender, RoutedEventArgs e) {
+        [RelayCommand]
+        public void Open_ConsoleLog() {
             if (consoleLogWindow == null) {
                 consoleLogWindow = new ConsoleLog { Title = "console.log" };
                 consoleLogWindow.Closed += (object sender, WindowEventArgs e) => {
@@ -64,7 +87,8 @@ namespace DaemonRecorder {
             AppLog.Write("console.log Window Opened");
         }
 
-        private void SongPlayerButton_Click(object sender, RoutedEventArgs e) {
+        [RelayCommand]
+        public void Open_SongPlayer() {
             if (songPlayerWindow == null) {
                 songPlayerWindow = new SongPlayer { Title = "Song Player" };
                 songPlayerWindow.Closed += (object sender, WindowEventArgs e) => {
@@ -77,7 +101,8 @@ namespace DaemonRecorder {
             AppLog.Write("Song Player Window Opened");
         }
 
-        private void AudioSettingsButton_Click(object sender, RoutedEventArgs e) {
+        [RelayCommand]
+        public void Open_AudioSettings() {
             if (audioSettingsWindow == null) {
                 audioSettingsWindow = new AudioSettings { Title = "Audio Settings" };
                 audioSettingsWindow.Closed += (object sender, WindowEventArgs e) => {
@@ -90,18 +115,16 @@ namespace DaemonRecorder {
             AppLog.Write("Audio Settings Window Opened");
         }
 
-        private void LaunchUI_Click(object sender, RoutedEventArgs e) {
+        [RelayCommand]
+        public void Open_UI() {
             var uri = new Uri($"{App.Settings.Api.BaseUrl}/experiments");
             var success = Windows.System.Launcher.LaunchUriAsync(uri);
 
             AppLog.Write($"Launched {uri} with success: {success}");
         }
 
-        public void UpdateStatus(string message) {
-            status.Text = message;
-        }
-
-        private void TaskbarIcon_DoubleTapped(object sender, Microsoft.UI.Xaml.Input.DoubleTappedRoutedEventArgs e) {
+        [RelayCommand]
+        public void TaskbarIcon_DoubleTapped() {
             AppLog.Write("TaskbarIcon DoubleTapped");
             this.Activate();
         }
