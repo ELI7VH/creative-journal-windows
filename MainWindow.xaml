@@ -14,7 +14,7 @@
         VerticalAlignment="Center"
         Width="700px"
         Spacing="20">
-        <tb:TaskbarIcon>
+        <tb:TaskbarIcon DoubleTapped="TaskbarIcon_DoubleTapped">
             <tb:TaskbarIcon.IconSource>
                 <tb:GeneratedIconSource
                     FontSize="70"
@@ -23,17 +23,26 @@
                     Text="❤"
                     Foreground="Red" />
             </tb:TaskbarIcon.IconSource>
+            <tb:TaskbarIcon.ContextFlyout>
+                <MenuFlyout>
+                    <MenuFlyout.Items>
+                        <MenuFlyoutItem
+                            Text="Exit"
+                            Command="Exit_Click" />
+                        <MenuFlyoutItem
+                            Text="Open UI"
+                            Command="LaunchUI_Click" />
+                    </MenuFlyout.Items>
+                </MenuFlyout>
+            </tb:TaskbarIcon.ContextFlyout>
         </tb:TaskbarIcon>
         <StackPanel
             Orientation="Horizontal"
             HorizontalAlignment="Center"
             Spacing="20">
             <Button
-                x:Name="DebugButton"
-                Click="DebugButton_Click">Click Me 💥</Button>
-            <Button
-                x:Name="AudioSettingsButton"
-                Click="AudioSettingsButton_Click">Audio Settings 🎙️</Button>
+                x:Name="VoiceNoteButton"
+                Click="VoiceNoteButton_Click">Voice Note 🎙️</Button>
             <Button
                 x:Name="SongPlayerButton"
                 Click="SongPlayerButton_Click">Song Player 🎶</Button>
@@ -43,19 +52,9 @@
             <Button
                 x:Name="LaunchUI"
                 Click="LaunchUI_Click">Launch UI 🔗</Button>
-        </StackPanel>
-        <StackPanel
-            x:Name="TransportPanel"
-            Orientation="Horizontal"
-            HorizontalAlignment="Center"
-            Spacing="20"
-            BorderBrush="DarkGray">
             <Button
-                Click="Record_Click">Record</Button>
-            <Button
-                Click="Stop_Click">Stop</Button>
-            <Button
-                Click="Play_Click">Play</Button>
+                x:Name="AudioSettingsButton"
+                Click="AudioSettingsButton_Click">Settings ⚙️</Button>
         </StackPanel>
         <StackPanel
             Orientation="Horizontal"

@@ -7,16 +7,18 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-    <StackPanel>
+    <StackPanel Margin="40" Spacing="20">
         <TextBox
             x:Name="Search"
             Text="Search For Song"
             TextChanged="Search_TextChanged" />
         <RichEditBox
+            Visibility="Collapsed"
             x:Name="SongList"
             Header="Song List"
             MinHeight="200"
-            MaxHeight="200"
+            MaxHeight="220"
             ScrollViewer.IsVerticalRailEnabled="True" />
+        
     </StackPanel>
 </Window>

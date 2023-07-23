@@ -5,11 +5,9 @@ using System.IO;
 namespace DaemonRecorder {
     // Singleton Class that writes to a log file
     internal class AppLog {
-        readonly public static string filename = "log.txt";
-        // local app data 'DaemonRecorder'
-        readonly public static string folder = App.appFolder;
-
-        readonly public static string path = System.IO.Path.Combine(folder, filename);
+        readonly public static string filename = App.Settings.General.LogFile;
+        readonly public static string folder = App.Settings.General.DataFolder;
+        readonly public static string path = Path.Combine(folder, filename);
 
         public static string Write(string message) {
             if (!Directory.Exists(folder)) {

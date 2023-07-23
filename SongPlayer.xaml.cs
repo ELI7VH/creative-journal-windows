@@ -12,12 +12,6 @@ namespace DaemonRecorder {
             this.InitializeComponent();
             GetSongs();
             this.AppWindow.Resize(new(600, 400));
-            this.AppWindow.Title = "Song Player";
-
-            this.Closed += (object sender, WindowEventArgs e) =>
-                AppLog.Write("Song Player Window Closed");
-
-            AppLog.Write("Song Player Window Opened");
         }
 
         private void GetSongs() {

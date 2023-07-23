@@ -1,20 +1,22 @@
-﻿using Microsoft.UI;
-using Microsoft.UI.Xaml;
+﻿using Microsoft.UI.Xaml;
 using SocketIOClient;
 
 // WinUI project structure: http://aka.ms/winui-project-info.
 
 namespace DaemonRecorder {
     public partial class App : Application {
+        public static Settings Settings { get; } = Settings.Load();
+
         public SocketIO client;
         public MainWindow window;
         public AudioRecorder recorder;
-        public static readonly string appFolder = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+        // public static readonly string appFolder = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+        // public static string baseUrl = "https://elijahlucian.ca"; // set from config / env
 
         public static App CurrentApp => (App)Current;
 
         public App() {
-            AppLog.Write("DaemonRecorder starting...");
+            AppLog.Write("CreativeJournal starting...");
 
             this.InitializeComponent();
         }
@@ -23,43 +25,17 @@ namespace DaemonRecorder {
             window = new MainWindow();
             window.Activate();
 
-            window.Title = "Daemon Recorder 🍕";
-            AppLog.Write("DaemonRecorder started!");
+            window.Title = "CreativeJournal 🍕";
+            AppLog.Write("CreativeJournal started!");
 
             ConnectToWebsocket();
-            InitializeAudio();
-        }
-
-        private void InitializeAudio() {
-            // TODO: make its own window (select)
-            AppLog.Write("Initializing Audio");
-
-            recorder = new AudioRecorder {
-                OnRecord = () => {
-                    AppLog.Write("Recording Callback...");
-                    window.SetTransportPanelColor(Colors.Red);
-                },
-                OnStop = () => {
-                    AppLog.Write("Stop Callback...");
-                    window.SetTransportPanelColor(Colors.Black);
-                },
-                OnPlay = () => {
-                    AppLog.Write("Play Callback...");
-                    window.SetTransportPanelColor(Colors.Blue);
-                }
-
-            };
-
-            foreach (var device in recorder.devices) {
-                AppLog.Write($"Audio Device Available: {device.ProductName}");
-            }
         }
 
         async private void ConnectToWebsocket() {
             // TODO: create own socket log window I think
             // this is the annoying one
             // maybe pass the socket reference to a new window instance?
-            var url = "https://elijahlucian.ca";
+            var url = Settings.Api.BaseUrl;
             client = new SocketIO(url);
 
             var path = client.Options.Path;

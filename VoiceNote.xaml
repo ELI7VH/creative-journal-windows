@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="DaemonRecorder.VoiceNote"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DaemonRecorder"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <StackPanel
+        Padding="40"
+        Spacing="20">
+        <TextBox
+            x:Name="recordingName"
+            PlaceholderText="Recording Name" />
+        <StackPanel
+            x:Name="TransportPanel"
+            Orientation="Horizontal"
+            HorizontalAlignment="Center"
+            Spacing="20"
+            BorderBrush="DarkGray">
+            <Button
+                x:Name="RecordButton"
+                Click="Record_Click">Record</Button>
+            <Button
+                x:Name="StopButton"
+                IsEnabled="False"
+                Click="Stop_Click">Stop</Button>
+            <Button
+                x:Name="PlayButton"
+                IsEnabled="False"
+                Click="Play_Click">Play</Button>
+        </StackPanel>
+        <StackPanel>
+            <TextBlock
+                x:Name="outputFileName"
+                ></TextBlock>
+        </StackPanel>
+    </StackPanel>
+</Window>
