@@ -77,6 +77,18 @@
                 x:Name="AudioSettingsButton"
                 Command="{x:Bind Open_AudioSettingsCommand}">Settings ⚙️</Button>
         </StackPanel>
+        <StackPanel
+            Orientation="Horizontal"
+            HorizontalAlignment="Center"
+            Spacing="20">
+            <Button
+                x:Name="MemeMachineButton"
+                >Meme Machine</Button>
+            <Button
+                x:Name="MicStreamButton"
+                Command="{x:Bind Open_MicStreamCommand}"
+                >Mic Stream</Button>
+        </StackPanel>
     </StackPanel>
 </Window>
 

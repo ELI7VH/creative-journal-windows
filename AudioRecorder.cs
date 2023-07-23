@@ -16,8 +16,7 @@ namespace DaemonRecorder {
         public Action OnRecord;
         public Action OnStop;
         public Action OnPlay;
-        public byte[] data;
-        public string Folder => Path.Combine(App.Settings.General.DataFolder, "audio-recordings", outputFolder);
+        public string Folder => Path.Combine(App.Settings.AudioFolder, outputFolder);
 
         public static List<WaveInCapabilities> GetDevices() {
             var deviceCount = NAudio.Wave.WaveIn.DeviceCount;
@@ -66,7 +65,7 @@ namespace DaemonRecorder {
 
             waveIn.RecordingStopped += (object sender, StoppedEventArgs e) => {
                 Debug.WriteLine("Recording Stopped");
-                writer.Dispose();
+                writer?.Dispose();
                 writer = null;
             };
 

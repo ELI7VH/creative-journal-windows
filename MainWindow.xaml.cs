@@ -116,6 +116,13 @@ namespace DaemonRecorder {
         }
 
         [RelayCommand]
+        public void Open_MicStream() {
+            var micStreamWindow = new MicStream();
+            micStreamWindow.Activate();
+
+        }
+
+        [RelayCommand]
         public void Open_UI() {
             var uri = new Uri($"{App.Settings.Api.BaseUrl}/experiments");
             var success = Windows.System.Launcher.LaunchUriAsync(uri);
@@ -128,6 +135,34 @@ namespace DaemonRecorder {
             AppLog.Write("TaskbarIcon DoubleTapped");
             this.Activate();
         }
+
+        // TODO: Meme Machine
+        // https://markheath.net/post/fire-and-forget-audio-playback-with
+
+        // TODO: Song Encoder
+        // https://github.com/naudio/NAudio/blob/master/Docs/MediaFoundationEncoder.md
+
+        // TODO: Song Browser and Organizer
+        // Tagged song management
+        // Automatic re-distribution of files
+        // Cloud Sync
+        // MP3 Tag Management
+        // Song Metadata Management
+        // File Renaming, etc
+
+        // TODO: Wav Editor
+        // https://markheath.net/post/trimming-wav-file-using-naudio
+        // Quck and dirty start / end trimmer
+        // https://github.com/naudio/NAudio/blob/master/Docs/FadeInOutSampleProvider.md
+
+        // TOOD: Chainsong Concatenator
+        // https://github.com/naudio/NAudio/blob/master/Docs/ConcatenatingAudio.md
+
+        // TODO: Spatial Audio Manager
+        // https://markheath.net/post/handling-multi-channel-audio-in-naudio
+
+        // TODO: The Drone
+        // https://github.com/naudio/NAudio/blob/master/Docs/PlaySineWave.md
     }
 }
 

@@ -1,12 +1,14 @@
 using Microsoft.UI.Xaml;
+using NAudio.Wave;
 using System.Collections.Generic;
-
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
+using System.Threading;
 
 namespace DaemonRecorder {
     public sealed partial class SongPlayer : Window {
         public List<SongRecord> songs;
+        public WasapiOut wo;
+        // TODO: Streaming MP3 for local playback:
+        // https://markheath.net/post/how-to-play-back-streaming-mp3-using
 
         public SongPlayer() {
             this.InitializeComponent();
@@ -44,6 +46,27 @@ namespace DaemonRecorder {
             var filtered = songs.FindAll((song) => song.name.ToLower().Contains(text.ToLower()));
 
             RefreshSongList(filtered);
+        }
+
+        public void Song_Play(string id) {
+            var url = songs.Find((song) => song.id == id).link;
+
+            if (url == null) return;
+
+            wo?.Dispose();
+
+            using var mf = new MediaFoundationReader(url);
+            using (wo = new WasapiOut()) {
+                wo.Init(mf);
+                wo.Play();
+
+                while (wo.PlaybackState == PlaybackState.Playing) {
+                    Thread.Sleep(1000);
+                }
+
+                wo.Dispose();
+                wo = null;
+            }
         }
 
 

@@ -1,4 +1,3 @@
-using H.NotifyIcon;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Media;
 using Windows.UI;
@@ -10,7 +9,6 @@ namespace DaemonRecorder {
 
         public VoiceNote() {
             this.InitializeComponent();
-            this.Title = "Voice Note";
             this.AppWindow.Resize(new Windows.Graphics.SizeInt32(600, 200));
 
             recorder = new AudioRecorder {
@@ -24,14 +22,6 @@ namespace DaemonRecorder {
                     StopButton.IsEnabled = true;
                 }
             };
-
-            this.Closed += (sender, e) => {
-                e.Equals(true);
-                this.Hide();
-                AppLog.Write("VoiceNote window closed");
-            };
-
-            AppLog.Write("VoiceNote window opened");
         }
 
 
@@ -45,6 +35,7 @@ namespace DaemonRecorder {
 
         public void Play_Click(object sender, RoutedEventArgs e) {
             // TODO should be able to review last recordings
+            // https://github.com/naudio/NAudio/blob/master/Docs/PlayAudioFileWinForms.md
             // recorder.Play();
         }
 

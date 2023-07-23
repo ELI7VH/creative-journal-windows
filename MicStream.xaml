@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="DaemonRecorder.MicStream"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DaemonRecorder"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <StackPanel
+        VerticalAlignment="Center"
+        Padding="40"
+        Spacing="20">
+        <StackPanel
+            HorizontalAlignment="Center"
+            Spacing="20"
+            Orientation="Horizontal">
+            <StackPanel
+                Spacing="10">
+                <StackPanel
+                    HorizontalAlignment="Center">
+                    <TextBlock>Input Devices</TextBlock>
+                </StackPanel>
+                <ComboBox
+                    x:Name="DeviceList"
+                    PlaceholderText="Select an Asio Device"
+                    SelectionChanged="DeviceList_SelectionChanged"></ComboBox>
+            </StackPanel>
+            <StackPanel
+                Spacing="10">
+                <StackPanel
+                    Spacing="20"
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal">
+                    <TextBlock>Input Select</TextBlock>
+                    <Button
+                        Padding="2"
+                        FontSize="10">🔧</Button>
+                </StackPanel>
+                <ComboBox
+                    x:Name="InputSelect"
+                    PlaceholderText="Select an Input"
+                    SelectionChanged="InputSelect_SelectionChanged"></ComboBox>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel
+            Spacing="20"
+            Orientation="Horizontal"
+            HorizontalAlignment="Center">
+            <Button
+                Name="StartButton"
+                Click="Start_Click">Start</Button>
+            <Button
+                Name="StopButton"
+                Click="Stop_Click">Stop</Button>
+        </StackPanel>
+        <StackPanel>    
+            <TextBlock
+                Name="statusMessage">
+            Select Device</TextBlock>
+        </StackPanel>
+    </StackPanel>
+</Window>

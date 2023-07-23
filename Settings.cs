@@ -21,14 +21,15 @@ namespace DaemonRecorder {
         public Settings() {
             General = new IGeneral() {
                 DataFolder = appDataPath,
-                LogFile = "log.txt"
+                LogFile = "log.txt",
+                ContextMenuAction = ContextMenuActions.MinMax
             };
 
             Audio = new IAudio() {
                 DeviceIndex = 0,
                 Channels = 2,
                 SampleRate = 44100,
-                OutputFolder = "audio"
+                Folder = "audio"
             };
 
             Api = new IApi() {
@@ -51,24 +52,37 @@ namespace DaemonRecorder {
             return JsonSerializer.Deserialize<Settings>(f);
         }
 
+
         public void Save() {
             var path = Path.Combine(appDataPath, "settings.json");
 
             var f = JsonSerializer.Serialize(this);
             File.WriteAllText(path, f);
         }
+
+        public string AudioFolder {
+            get {
+                return Path.Combine(General.DataFolder, Audio.Folder);
+            }
+        }
+    }
+
+    public enum ContextMenuActions {
+        RecordVoiceNote,
+        MinMax,
     }
 
     public class IGeneral {
         public string DataFolder { get; set; }
         public string LogFile { get; set; }
+        public ContextMenuActions ContextMenuAction { get; set; }
     }
 
     public class IAudio {
         public int DeviceIndex { get; set; }
         public int Channels { get; set; }
         public int SampleRate { get; set; }
-        public string OutputFolder { get; set; }
+        public string Folder { get; set; }
     }
 
     public class IApi {

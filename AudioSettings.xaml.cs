@@ -2,6 +2,9 @@ using Microsoft.UI.Xaml;
 
 namespace DaemonRecorder {
     public sealed partial class AudioSettings : Window {
+        // TODO: Wasapi out for playback:
+        // https://github.com/naudio/NAudio/blob/master/Docs/WasapiOut.md
+
         public AudioSettings() {
             this.InitializeComponent();
             this.AppWindow.Resize(new(400, 400));

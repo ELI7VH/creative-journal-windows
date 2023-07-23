@@ -32,6 +32,11 @@ namespace DaemonRecorder {
         public void UpdateLog() {
             Log.IsReadOnly = false;
             string content = AppLog.Read();
+            // get last 1000 characters
+            if (content.Length > 1000) {
+                content = content.Substring(content.Length - 1000);
+            }
+
             Log.Document.SetText(Microsoft.UI.Text.TextSetOptions.None, content);
             Log.IsReadOnly = true;
 

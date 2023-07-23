@@ -4,12 +4,15 @@ using System.Text.Json.Nodes;
 namespace DaemonRecorder {
     public class SongRecord {
         public JsonNode json;
+        public string id;
         public string link;
         public string name;
         public string folder;
 
         public SongRecord(JsonNode _json) {
             this.json = _json;
+
+            this.id = json["id"].ToString();
             var name = json["name"];
             var geneartedName = json["metadata"]["name"];
 

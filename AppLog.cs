@@ -33,7 +33,7 @@ namespace DaemonRecorder {
 
         public static FileSystemWatcher Watch() {
             // watch file for changes
-            Write($"Watching {path} for changes");
+            Debug.WriteLine($"Watching {path} for changes");
 
             var watcher = new FileSystemWatcher {
                 Path = folder,
